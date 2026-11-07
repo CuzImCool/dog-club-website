@@ -1,140 +1,85 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOGS Club</title>
+<p></p>
 
 <style>
-body {
-  margin: 0;
-  background: #17130f;
-  font-family: Arial, sans-serif;
-  color: white;
+@keyframes dogFall {
+  0% {
+    transform: translateY(-40px) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateY(105vh) rotate(360deg);
+    opacity: 0;
+  }
 }
-
-#dog-theme {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 24px;
-  text-align: center;
-  background: #17130f;
-  border: 2px solid #66834b;
-  border-radius: 14px;
-  position: relative;
-}
-
-h1 {
-  color: #a9c58a;
-  font-size: 48px;
-  letter-spacing: 5px;
-  margin-bottom: 5px;
-}
-
-.tagline {
-  color: #d6c49b;
-  letter-spacing: 3px;
-}
-
 .dog-rain {
   position: fixed;
   top: -45px;
   z-index: 999999;
   pointer-events: none;
-  animation: dogFall linear forwards;
-}
-
-@keyframes dogFall {
-  0% {
-    transform: translateY(-30px) rotate(0deg);
-    opacity: 0;
-  }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-button {
-  display: block;
-  width: 100%;
-  background: linear-gradient(90deg,#496b36,#80613d);
-  color: white;
-  border: 1px solid #a9c58a;
-  border-radius: 9px;
-  padding: 14px;
-  margin: 20px 0;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  cursor: pointer;
-}
-
-button:hover {
-  filter: brightness(1.2);
-}
-
-a {
-  color: #a9c58a;
-  text-decoration: none;
-  margin: 10px;
-}
-
-.section {
-  background: #282017;
-  border: 1px solid #66834b;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
+  animation-name: dogFall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 </style>
-</head>
 
-<body>
+<div id="dog-theme" style="background: #17130f; color: #fff; padding: 16px; border: 1px solid #66834b; border-radius: 14px; font-family: Arial,sans-serif;">
 
-<div id="dog-theme">
+<!-- HEADER -->
+<div id="dog-header" style="text-align: center; padding: 20px 8px; background: linear-gradient(135deg,#253b22,#493322,#172719); border: 1px solid #66834b; border-radius: 12px; margin-bottom: 14px;">
+<div style="font-size: 28px; font-weight: 900; letter-spacing: 4px; color: #d4edbd; text-shadow: 0 0 12px #6d9c4e;">&nbsp;DOGS&nbsp;</div>
+<div style="font-size: 10px; letter-spacing: 5px; color: #d8c6a6; margin-top: 8px;">C L U B</div>
+<div style="font-size: 10px; letter-spacing: 3px; color: #c5c5b8; margin-top: 12px;">PLAY &bull; HAVE FUN &bull; STAY PAWSITIVE</div>
 
-  <h1>🐶 DOGS 🐶</h1>
-  <p class="tagline">PLAY • HAVE FUN • STAY PAWSITIVE</p>
-
-  <button onclick="
-    var dogs=['🐶','🐕','🦮','🐩','🐾','🦴','🐕‍🦺'];
-    for(var i=0;i<35;i++){
-      (function(){
-        var dog=document.createElement('span');
-        dog.className='dog-rain';
-        dog.textContent=dogs[Math.floor(Math.random()*dogs.length)];
-        dog.style.left=(Math.random()*96)+'vw';
-        dog.style.fontSize=(20+Math.random()*22)+'px';
-        dog.style.animationDuration=(2.5+Math.random()*2.5)+'s';
-        dog.style.animationDelay=(Math.random()*1.5)+'s';
-        document.body.appendChild(dog);
-        setTimeout(function(){dog.remove();},7000);
-      })();
-    }
-  ">🐶 MAKE IT RAIN DOGS 🐾</button>
-
-  <div class="section">
-    <h2>WELCOME TO THE DOGS CLUB!</h2>
-    <p>A place for dog lovers to play, have fun, and enjoy chess!</p>
-    <p><a href="https://www.chess.com/club/dog-s" target="_blank">VISIT OUR CHESS.COM CLUB</a></p>
-  </div>
-
-  <div class="section">
-    <h2>🐾 CLUB NAVIGATION 🐾</h2>
-    <p><a href="https://www.chess.com/club/dog-s">HOME</a></p>
-    <p><a href="https://www.chess.com/club/dog-s/members">MEMBERS</a></p>
-    <p><a href="https://www.chess.com/club/dog-s/events">EVENTS</a></p>
-  </div>
-
-  <p style="color:#a9c58a;margin-top:30px;">
-    MADE FOR DOG LOVERS 🐶
-  </p>
-
+<!-- ANIMATED DOG BOX -->
+<div id="dog-dance" style="display: block; animation: 0.35s dogPop;"></div>
 </div>
 
-</body>
-</html>
+<!-- DOG RAIN BUTTON -->
+<button type="button" onclick="
+var dogs=['🐶','🐕','🦮','🐩','🐾','🦴','🐕‍🦺'];
+for(var i=0;i<40;i++){
+  (function(){
+    var dog=document.createElement('span');
+    dog.className='dog-rain';
+    dog.textContent=dogs[Math.floor(Math.random()*dogs.length)];
+    dog.style.left=(Math.random()*96)+'vw';
+    dog.style.fontSize=(20+Math.random()*24)+'px';
+    dog.style.animationDuration=(2.5+Math.random()*2.5)+'s';
+    dog.style.animationDelay=(Math.random()*1.5)+'s';
+    document.body.appendChild(dog);
+    setTimeout(function(){dog.remove();},7000);
+  })();
+}
+" style="display:block; width:100%; background:linear-gradient(90deg,#496b36,#80613d); color:white; border:1px solid #a9c58a; border-radius:9px; padding:14px; margin:10px 0 16px; font-weight:bold; letter-spacing:2px; cursor:pointer;">
+🐶 MAKE IT RAIN DOGS 🐾
+</button>
+
+<!-- JOIN BUTTON -->
+<a href="https://www.chess.com/club/dog-s" target="_blank" onclick="
+var dog=document.getElementById('dog-dance');
+dog.style.display='block';
+dog.style.animation='none';
+void dog.offsetWidth;
+dog.style.animation='dogPop .35s ease';
+" style="display: block; background: linear-gradient(90deg,#496b36,#80613d); color: #fff; text-decoration: none; text-align: center; border: 1px solid #a9c58a; border-radius: 9px; padding: 14px; margin: 10px 0 16px; font-weight: bold; letter-spacing: 2px; box-shadow: 0 0 12px #385b2c; transition: all .25s ease;" onmouseover="this.style.boxShadow='0 0 28px #91bd68,0 0 40px #80613d';this.style.transform='scale(1.03)';this.style.filter='brightness(1.3)'" onmouseout="this.style.boxShadow='0 0 12px #385b2c';this.style.transform='scale(1)';this.style.filter='brightness(1)'" rel="noopener">&nbsp;JOIN THE CLUB </a>
+
+<!-- NAVIGATION -->
+<div style="background: #211c16; border: 1px solid #6b8050; border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+<div style="text-align: center; font-size: 13px; font-weight: bold; letter-spacing: 3px; margin-bottom: 12px; color: #d6e7bd;">✦ NAVIGATION ✦</div>
+
+<a href="https://www.chess.com/club/dog-s" style="display: block; background: #30291f; color: #fff; text-decoration: none; border: 1px solid #78945b; border-radius: 8px; padding: 12px; margin: 8px 0; font-weight: bold; transition: all .25s ease;" onmouseover="this.style.boxShadow='0 0 22px #91bd68';this.style.borderColor='#c6e6a6';this.style.transform='scale(1.03)';this.style.background='#405b30'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#78945b';this.style.transform='scale(1)';this.style.background='#30291f'">🐾 &nbsp; CLUB HOME </a>
+
+<a href="https://www.chess.com/clubs/members/dog-s" style="display: block; background: #30291f; color: #fff; text-decoration: none; border: 1px solid #8b704c; border-radius: 8px; padding: 12px; margin: 8px 0; font-weight: bold; transition: all .25s ease;" onmouseover="this.style.boxShadow='0 0 22px #b99a69';this.style.borderColor='#e2c99d';this.style.transform='scale(1.03)';this.style.background='#51402d'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#8b704c';this.style.transform='scale(1)';this.style.background='#30291f'">🐕 &nbsp; MEMBERS </a>
+
+<a href="https://www.chess.com/clubs/events/dog-s" style="display: block; background: #30291f; color: #fff; text-decoration: none; border: 1px solid #78945b; border-radius: 8px; padding: 12px; margin: 8px 0; font-weight: bold; transition: all .25s ease;" onmouseover="this.style.boxShadow='0 0 22px #91bd68';this.style.borderColor='#c6e6a6';this.style.transform='scale(1.03)';this.style.background='#405b30'" onmouseout="this.style.boxShadow='none';this.style.borderColor='#78945b';this.style.transform='scale(1)';this.style.background='#30291f'">🦴 &nbsp; EVENTS </a>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align: center; padding: 10px; color: #c6d8ae; font-size: 13px; font-style: italic;"></div>
+<div style="height: 1px; background: #6b8050; margin: 6px 0 12px;"></div>
+<div style="text-align: center; color: #b7a487; font-size: 9px; letter-spacing: 4px;">D O G S &bull; 2 0 2 6</div>
+
+</div>
+<p></p>
